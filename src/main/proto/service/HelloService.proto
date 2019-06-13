@@ -1,0 +1,7 @@
+syntax = "proto3";
+import "message/hello/HelloMessage.proto";
+package com.example.grpc.server.service;
+
+service HelloService {
+    rpc hello(com.example.grpc.server.message.HelloRequest) returns (com.example.grpc.server.message.HelloResponse);
+}
