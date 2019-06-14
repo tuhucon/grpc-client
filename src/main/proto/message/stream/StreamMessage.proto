@@ -1,0 +1,11 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.example.grpc.server.message;
+
+message ServerStreamRequest {
+    int32 start = 1;
+}
+
+message ServerStreamResponse {
+    int32 next = 1;
+}

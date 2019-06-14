@@ -8,6 +8,7 @@
         <version>2.1.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.example.grpc</groupId>
     <artifactId>client</artifactId>
     <version>0.0.1-SNAPSHOT</version>

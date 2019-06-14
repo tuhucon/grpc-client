@@ -1,0 +1,7 @@
+syntax = "proto3";
+import "message/stream/StreamMessage.proto";
+package com.example.grpc.server.service;
+
+service StreamService {
+    rpc serverStream(com.example.grpc.server.message.ServerStreamRequest) returns (stream com.example.grpc.server.message.ServerStreamResponse);
+}
