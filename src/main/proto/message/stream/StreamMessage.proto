@@ -9,3 +9,11 @@ message ServerStreamRequest {
 message ServerStreamResponse {
     int32 next = 1;
 }
+
+message ClientStreamRequest {
+    int32 next = 1;
+}
+
+message ClientStreamResponse {
+    int32 count = 1;
+}
