@@ -3,7 +3,13 @@ import "message/stream/StreamMessage.proto";
 package com.example.grpc.server.service;
 
 service StreamService {
-    rpc serverStream(com.example.grpc.server.message.ServerStreamRequest) returns (stream com.example.grpc.server.message.ServerStreamResponse);
+    rpc serverStream(com.example.grpc.server.message.ServerStreamRequest)
+                returns (stream com.example.grpc.server.message.ServerStreamResponse);
 
-    rpc clientStream(stream com.example.grpc.server.message.ClientStreamRequest) returns (com.example.grpc.server.message.ClientStreamResponse);
+    rpc clientStream(stream com.example.grpc.server.message.ClientStreamRequest)
+                returns (com.example.grpc.server.message.ClientStreamResponse);
+
+    rpc bidirectionStream(stream com.example.grpc.server.message.BidirectionStreamRequest)
+                returns (stream com.example.grpc.server.message.BidirectionStreamResponse);
+
 }

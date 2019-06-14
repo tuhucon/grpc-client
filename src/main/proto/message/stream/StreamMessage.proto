@@ -17,3 +17,11 @@ message ClientStreamRequest {
 message ClientStreamResponse {
     int32 count = 1;
 }
+
+message BidirectionStreamRequest {
+    string msg = 1;
+}
+
+message BidirectionStreamResponse {
+    string msg = 1;
+}
