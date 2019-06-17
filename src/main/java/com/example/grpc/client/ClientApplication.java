@@ -2,7 +2,9 @@ package com.example.grpc.client;
 
 import com.example.grpc.server.message.*;
 
+import com.example.grpc.server.service.HelloServiceGrpc;
 import com.example.grpc.server.service.StreamServiceGrpc;
+import io.grpc.Deadline;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
@@ -10,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -23,10 +26,14 @@ public class ClientApplication {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 6565).usePlaintext().build();
 
         //Unary call
-//        HelloServiceGrpc.HelloServiceBlockingStub helloService = HelloServiceGrpc.newBlockingStub(channel);
+        HelloServiceGrpc.HelloServiceBlockingStub helloService = HelloServiceGrpc.newBlockingStub(channel);
 
-//        HelloResponse response = helloService.hello(HelloRequest.newBuilder().setFirstName("minh").setLastName("tuan").build());
-//        System.out.println(response);
+        HelloResponse response = helloService.withDeadline(Deadline.after(60, TimeUnit.SECONDS))
+                                             .hello(HelloRequest.newBuilder()
+                                                                .setFirstName("minh")
+                                                                .setLastName("tuan")
+                                                                .build());
+        System.out.println(response);
 
         //Server Streaming
 //        StreamServiceGrpc.StreamServiceBlockingStub blockingStreamService = StreamServiceGrpc.newBlockingStub(channel);
